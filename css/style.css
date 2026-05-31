@@ -1,0 +1,44 @@
+:root{
+    --color-principal:#2563eb;
+    --color-secundario:#111827;
+    --color-blanco:#ffffff;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+}
+
+ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+.banner{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.destacados{
+    padding:40px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+}
