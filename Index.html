@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,55 +10,82 @@
     <title>Mobify</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="image" href="img/Logo mobify.png">
+    <link rel="stylesheet" href="css//notificationStyle.css">
 </head>
+
 <body>
     <header>
 
     </header>
 
-    <nav>   
-        <img src="img/Logo mobify.png"alt="Logo Mobify"width="120"/>
-        <ul>
-            <li>
-                <a href="index.html">Inicio</a>
-            </li>
+    <nav>
+        <img src="img/Logo mobify.png" alt="Logo Mobify" width="120">
 
-            <li>
-                <a href="pages/catalogo.html">Catálogo</a>
-            </li>
+        <button class="menu-toggle" id="menu-toggle">
+            ☰
+        </button>
 
-            <li>
-                <a href="pages/carrito.html">Carrito</a>
-            </li>
-
-            <li>
-                <a href="pages/contacto.html">Contacto</a>
-            </li>
+        <ul id="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <!-- <li><a href="pages/catalogo.html">Catálogo</a></li> -->
+            <!-- <li><a href="pages/contacto.html">Contacto</a></li> -->
+            <li><a href="pages/login.html">Login</a></li>
         </ul>
     </nav>
 
     <main>
         <section class="banner">
 
-        <h1>Mobify</h1>
+            <h1>Mobify</h1>
 
-        <p>Encuentra los mejores smartphones 
-            de las marcas más reconocidas.</p>
+            <p>Encuentra los mejores smartphones
+                de las marcas más reconocidas.</p>
 
         </section>
         <section class="destacados">
 
-        <h2>Productos Destacados</h2>
+            <h2>Productos Destacados</h2>
 
-        <div id="productos-destacados">
+            <div class="search-container">
+                <input type="text" id="search-product" placeholder="🔍 Buscar celular...">
+            </div>
 
-        </div>
+            <div id="productos-destacados">
+
+            </div>
 
         </section>
     </main>
 
     <footer>
-            <p>© 2026 Mobify - Todos los derechos reservados</p>
+        <p>© 2026 Mobify - Todos los derechos reservados</p>
     </footer>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>🛒 Carrito</h2>
+            <button id="close-cart">✕</button>
+        </div>
+
+        <div id="cart-items" class="cart-items">
+            <p class="empty-cart">Tu carrito está vacío</p>
+        </div>
+
+        <div class="cart-footer">
+            <h3 id="cart-total">Total: S/ 0</h3>
+            <button class="checkout-btn">
+                Finalizar compra
+            </button>
+        </div>
+    </div>
+
+    <button id="open-cart" class="floating-cart">
+        🛒
+    </button>
+    <script src="./js/productos.js"></script>
+    <script src="./js/carrito.js"></script>
+    <script src="./js/notification.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/index.js"></script>
 </body>
+
 </html>
