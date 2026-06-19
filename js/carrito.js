@@ -1,6 +1,7 @@
 
-const carrito = [];
 
+const carrito = getLclStrg("carrito") !== null ? getLclStrg("carrito") : []
+console.log(JSON.parse(localStorage.getItem("carrito")))
 const cartSidebar =
     document.getElementById("cart-sidebar");
 
@@ -20,6 +21,15 @@ document
     });
 
 function agregarAlCarrito(producto) {
+    let productos;
+    if (getLclStrg("carrito") === null) {
+        productos = [];
+    }
+    else {
+        productos = JSON.parse(localStorage.getItem("carrito"))
+    }
+    productos.push(producto)
+    setLclStrg("carrito", JSON.stringify(productos))
     carrito.push(producto);
 
     renderCarrito();
@@ -37,10 +47,11 @@ function quitarDelCarrito(nombreProducto) {
 
     if (index !== -1) {
         carrito.splice(index, 1);
-
+        setLclStrg("carrito", carrito)
+        if(carrito.length === 0) localStorage.removeItem("carrito")
         renderCarrito();
         actualizarBotones();
-        
+
         showNotification(
             `${nombreProducto} eliminado del carrito`,
             "warning"
@@ -76,16 +87,15 @@ function actualizarBotones() {
 function renderCarrito() {
 
     if (!carrito.length) {
+        cartItems.innerHTML =
+            '<p class="empty-cart">Tu carrito está vacío</p>';
 
-    cartItems.innerHTML =
-        '<p class="empty-cart">Tu carrito está vacío</p>';
+        document.getElementById(
+            "cart-total"
+        ).textContent = "Total: S/ 0";
 
-    document.getElementById(
-        "cart-total"
-    ).textContent = "Total: S/ 0";
-
-    return;
-}
+        return;
+    }
 
     cartItems.innerHTML = "";
 
@@ -119,3 +129,5 @@ function renderCarrito() {
     ).textContent =
         `Total: S/ ${total.toLocaleString()}`;
 }
+
+renderCarrito();
