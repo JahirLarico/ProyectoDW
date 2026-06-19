@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../css/pagoStyle.css">
     <link rel="stylesheet" href="../css/notificationStyle.css">
 </head>
+
 <body>
 
     <div class="checkout-container">
@@ -19,84 +21,30 @@
 
                 <h2>Datos Personales</h2>
 
-                <input
-                    type="text"
-                    id="nombre"
-                    placeholder="Nombre completo"
-                    required
-                    minlength="5"
-                    maxlength="50"
-                >
+                <input type="text" id="nombre" placeholder="Nombre completo" required minlength="5" maxlength="50">
 
-                <input
-                    type="email"
-                    id="correo"
-                    placeholder="Correo electrónico"
-                    required
-                >
+                <input type="email" id="correo" placeholder="Correo electrónico" required>
 
-                <input
-                    type="tel"
-                    id="telefono"
-                    placeholder="Teléfono"
-                    required
-                    minlength="9"
-                    maxlength="9"
-                >
+                <input type="tel" id="telefono" placeholder="Teléfono" required minlength="9" maxlength="9">
 
                 <h2>Dirección</h2>
 
-                <input
-                    type="text"
-                    id="direccion"
-                    placeholder="Dirección"
-                    required
-                    minlength="10"
-                >
+                <input type="text" id="direccion" placeholder="Dirección" required minlength="10">
 
-                <input
-                    type="text"
-                    id="ciudad"
-                    placeholder="Ciudad"
-                    required
-                >
+                <input type="text" id="ciudad" placeholder="Ciudad" required>
 
-                <textarea
-                    id="referencia"
-                    placeholder="Referencia (opcional)"
-                ></textarea>
+                <textarea id="referencia" placeholder="Referencia (opcional)"></textarea>
 
                 <h2>Pago</h2>
 
-                <input
-                    type="text"
-                    id="tarjeta"
-                    placeholder="Número de tarjeta"
-                    maxlength="16"
-                    required
-                >
+                <input type="text" id="tarjeta" placeholder="Número de tarjeta" maxlength="16" required>
 
-                <input
-                    type="text"
-                    id="titular"
-                    placeholder="Nombre del titular"
-                    required
-                >
+                <input type="text" id="titular" placeholder="Nombre del titular" required>
 
                 <div class="row">
-                    <input
-                        type="month"
-                        id="fecha"
-                        required
-                    >
+                    <input type="month" id="fecha" required>
 
-                    <input
-                        type="password"
-                        id="cvv"
-                        placeholder="CVV"
-                        maxlength="3"
-                        required
-                    >
+                    <input type="password" id="cvv" placeholder="CVV" maxlength="3" required>
                 </div>
 
                 <button type="submit">
@@ -113,27 +61,21 @@
 
             <div id="productos-resumen">
 
-                <div class="item">
-                    <p>Samsung Galaxy S25</p>
-                    <span>S/ 3,499</span>
-                </div>
-
-                <div class="item">
-                    <p>Xiaomi 16</p>
-                    <span>S/ 2,299</span>
-                </div>
-
+                
             </div>
 
             <hr>
 
-            <h3>Total: S/ 5,798</h3>
+            <h3 id="total"></h3>
 
         </div>
 
     </div>
 
+    <script src="../js/localStorage.js"></script>
+    <script src="../js/carrito.js"></script>
     <script src="../js/pago.js"></script>
     <script src="../js/notification.js"></script>
 </body>
+
 </html>

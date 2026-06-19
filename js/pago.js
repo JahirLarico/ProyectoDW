@@ -1,4 +1,23 @@
 //Validaciones 
+const contenedor = document.getElementById("productos-resumen");
+const totalTag = document.getElementById("total")
+function loadData(productos) {
+    if (productos == 0) contenedor.innerHTML = `<p>No hay productos en el carrito</p>`;
+    carrito.forEach(producto => {
+        const card = document.createElement("div");
+
+        card.classList.add("item");
+        card.innerHTML = `
+                    <p>${producto.nombre}</p>
+                    <span>S/ ${producto.precio}</span>
+        `;
+        contenedor.appendChild(card);
+    });
+    const total = productos.reduce((tempVal, prod) => tempVal + Number(prod.precio),0);
+    totalTag.textContent = `S/ ${total}`
+}
+
+loadData(carrito)
 document
     .getElementById("purchase-form")
     .addEventListener("submit", e => {

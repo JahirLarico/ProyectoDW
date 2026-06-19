@@ -53,7 +53,7 @@ function showProducts(listaProductos) {
         card.innerHTML = `
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
-            <p class="precio">${producto.precio}</p>
+            <p class="precio">S/ ${producto.precio}</p>
 
             <div class="acciones">
                 <button class="btn-carrito ${existe ? 'remove-mode' : ''}">

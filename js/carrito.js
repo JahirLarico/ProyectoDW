@@ -1,7 +1,6 @@
 
 
 const carrito = getLclStrg("carrito") !== null ? getLclStrg("carrito") : []
-console.log(JSON.parse(localStorage.getItem("carrito")))
 const cartSidebar =
     document.getElementById("cart-sidebar");
 
@@ -113,7 +112,7 @@ function renderCarrito() {
         cartItems.innerHTML += `
         <div class="cart-item">
             <h4>${producto.nombre}</h4>
-            <p>${producto.precio}</p>
+            <p>S/ ${producto.precio}</p>
 
             <button
                 class="remove-item"
