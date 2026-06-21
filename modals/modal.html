@@ -1,29 +1,29 @@
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-</head>
-<link rel="stylesheet" href="../css/style.css">
-
-<body>
-    <div id="product-modal" class="modal">
+<!--
+    Modal convertido al componente .modal nativo de Bootstrap 5.
+    - .modal fade            → animación de Bootstrap (reemplaza el keyframe propio)
+    - .modal-dialog-centered → centrado vertical sin CSS extra
+    - data-bs-dismiss="modal" en la X y en cancelar
+    Se inyecta en el <body> con fetch desde modal.js (igual que antes).
+-->
+<div class="modal fade" id="product-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
 
-            <img id="modal-image" src="" alt="Producto">
+            <div class="modal-header">
+                <h2 class="modal-title h4" id="modal-title"></h2>
+                <!-- Botón cerrar estándar de Bootstrap -->
+                <button type="button" class="btn-close close-modal" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
 
-            <h2 id="modal-title"></h2>
+            <div class="modal-body text-center">
+                <img id="modal-image" src="" alt="Producto" class="img-fluid rounded mb-3">
+                <p id="modal-price" class="fs-5 fw-bold"></p>
+                <p id="modal-description" class="text-muted"></p>
+            </div>
 
-            <p id="modal-price"></p>
-
-            <p id="modal-description"></p>
-
-            <button id="modal-cart-btn">
-                Agregar al carrito
-            </button>
+            <div class="modal-footer">
+                <button id="modal-cart-btn" class="btn w-100 modal-cart-btn">Agregar al carrito</button>
+            </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-</body>
+</div>

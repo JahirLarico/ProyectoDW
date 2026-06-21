@@ -1,102 +1,60 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+/*
+    LOGIN - CSS propio complementario al .card y .form-control de Bootstrap.
+    Mobile First: el .login-card ya usa w-100 y max-width en el HTML,
+    aquí solo añadimos colores, blur y degradado.
+*/
+
+body{
+    /* min-vh-100 lo aporta Bootstrap; el fondo va aquí */
+    background:linear-gradient(135deg,#1e3a8a,#3b82f6,#6d28d9);
+    font-family:'Segoe UI', system-ui, sans-serif;
 }
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(
-        135deg,
-        #1e3a8a,
-        #3b82f6,
-        #6d28d9
-    );
+.login-card{
+    /* Glassmorphism encima del .card de Bootstrap */
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:20px;
+    color:#fff;
 }
 
-.login-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login-card h1{ font-weight:700; }
+.login-card .form-label{ font-weight:500; }
+
+/* Hacemos que los .form-control de Bootstrap se vean bien sobre fondo translúcido */
+.login-card .form-control{
+    border:none;
+    border-radius:10px;
+    padding:12px;
+}
+.login-card .form-control:focus{
+    box-shadow:0 0 0 .2rem rgba(96,165,250,.45);
 }
 
-.login-card {
-    width: 380px;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    color: white;
+/* Botón con el gradiente de marca, sobreescribe .btn por clase propia */
+.login-btn{
+    background:linear-gradient(90deg,#2563eb,#7c3aed);
+    color:#fff;
+    font-weight:bold;
+    padding:12px;
+    border-radius:10px;
+    transition:.25s;
+}
+.login-btn:hover{
+    color:#fff;
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(124,58,237,.5);
 }
 
-.login-card h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
+.register a{
+    color:#c4b5fd;
+    font-weight:bold;
+    text-decoration:none;
 }
+.register a:hover{ text-decoration:underline; }
 
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    font-size: 1rem;
-}
-
-.input-group input:focus {
-    box-shadow: 0 0 10px #60a5fa;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.5);
-}
-
-.register {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.register a {
-    color: #c4b5fd;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.register a:hover {
-    text-decoration: underline;
+/* Tablet ≥768px: más respiración */
+@media (min-width: 768px){
+    .login-card h1{ font-size:2.25rem; }
 }

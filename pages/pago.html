@@ -4,74 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalizar Compra</title>
+    <title>Finalizar Compra - Mobify</title>
+
+    <!-- Bootstrap 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/pagoStyle.css">
     <link rel="stylesheet" href="../css/notificationStyle.css">
 </head>
 
 <body>
 
-    <div class="checkout-container">
+    <!--
+        Container Bootstrap + grid row/col.
+        Mobile First:
+        - col-12         → en móvil cada bloque ocupa todo el ancho (apilados)
+        - col-lg-8 / col-lg-4 → en escritorio ≥992px se ven en 2 columnas
+    -->
+    <div class="checkout-container container py-4">
+        <div class="row g-4">
 
-        <div class="checkout-form">
+            <!-- Formulario de compra -->
+            <div class="col-12 col-lg-8">
+                <div class="checkout-form card shadow-sm p-3 p-md-4">
+                    <h1 class="h3 mb-3">Finalizar Compra</h1>
 
-            <h1>Finalizar Compra</h1>
+                    <form id="purchase-form" class="row g-3" novalidate>
 
-            <form id="purchase-form">
+                        <div class="col-12">
+                            <h2 class="h5">Datos Personales</h2>
+                        </div>
 
-                <h2>Datos Personales</h2>
+                        <!-- form-control = input estilizado de Bootstrap -->
+                        <div class="col-12">
+                            <input type="text" id="nombre" class="form-control"
+                                placeholder="Nombre completo" required minlength="5" maxlength="50">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="email" id="correo" class="form-control" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input type="tel" id="telefono" class="form-control"
+                                placeholder="Teléfono" required minlength="9" maxlength="9">
+                        </div>
 
-                <input type="text" id="nombre" placeholder="Nombre completo" required minlength="5" maxlength="50">
+                        <div class="col-12">
+                            <h2 class="h5 mt-2">Dirección</h2>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input type="text" id="direccion" class="form-control"
+                                placeholder="Dirección" required minlength="10">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <input type="text" id="ciudad" class="form-control" placeholder="Ciudad" required>
+                        </div>
+                        <div class="col-12">
+                            <textarea id="referencia" class="form-control" placeholder="Referencia (opcional)"></textarea>
+                        </div>
 
-                <input type="email" id="correo" placeholder="Correo electrónico" required>
+                        <div class="col-12">
+                            <h2 class="h5 mt-2">Pago</h2>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="tarjeta" class="form-control"
+                                placeholder="Número de tarjeta" maxlength="16" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="titular" class="form-control" placeholder="Nombre del titular" required>
+                        </div>
+                        <!-- Antes era .row con flex propio; ahora usa grid de Bootstrap -->
+                        <div class="col-6">
+                            <input type="month" id="fecha" class="form-control" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="password" id="cvv" class="form-control" placeholder="CVV" maxlength="3" required>
+                        </div>
 
-                <input type="tel" id="telefono" placeholder="Teléfono" required minlength="9" maxlength="9">
-
-                <h2>Dirección</h2>
-
-                <input type="text" id="direccion" placeholder="Dirección" required minlength="10">
-
-                <input type="text" id="ciudad" placeholder="Ciudad" required>
-
-                <textarea id="referencia" placeholder="Referencia (opcional)"></textarea>
-
-                <h2>Pago</h2>
-
-                <input type="text" id="tarjeta" placeholder="Número de tarjeta" maxlength="16" required>
-
-                <input type="text" id="titular" placeholder="Nombre del titular" required>
-
-                <div class="row">
-                    <input type="month" id="fecha" required>
-
-                    <input type="password" id="cvv" placeholder="CVV" maxlength="3" required>
+                        <div class="col-12">
+                            <button type="submit" class="btn w-100 pago-btn">Confirmar Compra</button>
+                        </div>
+                    </form>
                 </div>
-
-                <button type="submit">
-                    Confirmar Compra
-                </button>
-
-            </form>
-
-        </div>
-
-        <div class="checkout-summary">
-
-            <h2>Resumen</h2>
-
-            <div id="productos-resumen">
-
-                
             </div>
 
-            <hr>
-
-            <h3 id="total"></h3>
+            <!-- Resumen del pedido -->
+            <div class="col-12 col-lg-4">
+                <div class="checkout-summary card shadow-sm p-3 p-md-4">
+                    <h2 class="h4">Resumen</h2>
+                    <div id="productos-resumen" class="list-group list-group-flush my-2"></div>
+                    <hr>
+                    <h3 id="total" class="h5 text-end"></h3>
+                </div>
+            </div>
 
         </div>
-
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script src="../js/localStorage.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/pago.js"></script>

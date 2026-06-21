@@ -8,75 +8,110 @@
     <meta name="keywords" content="celulares, smartphones, samsung, iphone, xiaomi, honor, oppo">
     <meta name="autor" content="Equipo Mobify">
     <title>Mobify</title>
+
+    <!-- Bootstrap 5.3.8 CSS  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- CSS propio que COMPLEMENTA a Bootstrap (no lo reemplaza) -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/Logo mobify.png">
-    <link rel="stylesheet" href="css//notificationStyle.css">
+    <link rel="stylesheet" href="css/notificationStyle.css">
 </head>
 
 <body>
-    <nav>
-        <img src="img/Logo mobify.png" alt="Logo Mobify" width="120">
 
-        <button class="menu-toggle" id="menu-toggle">
-            ☰
-        </button>
+    <!--
+        NAVBAR de Bootstrap: usa .navbar-expand-lg para que en móvil aparezca
+        el botón "hamburguesa" automáticamente (Mobile First) y a partir de
+        ≥992px se muestre el menú horizontal sin JS adicional.
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark mobify-navbar sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Index.html">
+                <img src="img/Logo mobify.png" alt="Logo Mobify" width="110">
+            </a>
 
-        <ul id="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="pages/login.html">Login</a></li>
-        </ul>
+            <!-- Botón hamburguesa nativo de Bootstrap (reemplaza al .menu-toggle propio) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false"
+                aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <main>
-        <section class="banner">
-
-            <h1>Mobify</h1>
-
-            <p>Encuentra los mejores smartphones
-                de las marcas más reconocidas.</p>
-
+        <!-- Banner: container-fluid para ocupar todo el ancho, py-* para padding fluido -->
+        <section class="banner text-center py-5">
+            <div class="container">
+                <h1 class="display-4 fw-bold">Mobify</h1>
+                <p class="lead mb-0">Encuentra los mejores smartphones de las marcas más reconocidas.</p>
+            </div>
         </section>
-        <section class="destacados">
 
-            <h2>Productos Destacados</h2>
+        <!-- Sección destacados dentro de un .container de Bootstrap -->
+        <section class="destacados container py-4">
+            <h2 class="text-center text-lg-start mb-3">Productos Destacados</h2>
 
-            <div class="search-container">
-                <input type="text" id="search-product" placeholder="🔍 Buscar celular...">
+            <!-- Buscador usando .form-control de Bootstrap -->
+            <div class="search-container mb-4">
+                <input type="text" id="search-product" class="form-control form-control-lg"
+                    placeholder="🔍 Buscar celular...">
             </div>
 
-            <div id="productos-destacados">
-
-            </div>
-
+            <!--
+                Grilla Bootstrap Mobile First:
+                - row-cols-1   → 1 columna en móvil (<576px)
+                - row-cols-sm-2 → 2 columnas en ≥576px
+                - row-cols-md-3 → 3 columnas en tablet ≥768px
+                - row-cols-lg-4 → 4 columnas en escritorio ≥992px
+                g-3 = gutter (espaciado) entre columnas.
+                Los productos los inyecta productos.js dentro de este row.
+            -->
+            <div id="productos-destacados" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3"></div>
         </section>
     </main>
 
-    <footer>
-        <p>© 2026 Mobify - Todos los derechos reservados</p>
+    <footer class="text-center text-white py-3 mobify-footer">
+        <p class="mb-0">© 2026 Mobify - Todos los derechos reservados</p>
     </footer>
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h2>🛒 Carrito</h2>
-            <button id="close-cart">✕</button>
+
+    <!--
+        OFFCANVAS de Bootstrap (reemplaza al sidebar propio del carrito).
+        Es totalmente responsive y se cierra solo con data-bs-dismiss.
+    -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cart-sidebar" aria-labelledby="cartLabel">
+        <div class="offcanvas-header cart-header">
+            <h5 class="offcanvas-title" id="cartLabel">🛒 Carrito</h5>
+            <button type="button" id="close-cart" class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
         </div>
 
-        <div id="cart-items" class="cart-items">
-            <p class="empty-cart">Tu carrito está vacío</p>
+        <div id="cart-items" class="offcanvas-body cart-items">
+            <p class="empty-cart text-center text-muted">Tu carrito está vacío</p>
         </div>
 
-        <div class="cart-footer">
-            <h3 id="cart-total">Total: S/ 0</h3>
-            <button class="checkout-btn">
-                Finalizar compra
-            </button>
+        <div class="cart-footer p-3 border-top">
+            <h3 id="cart-total" class="h5">Total: S/ 0</h3>
+            <button class="checkout-btn btn w-100">Finalizar compra</button>
         </div>
     </div>
 
-    <button id="open-cart" class="floating-cart">
+    <!-- Botón flotante para abrir el offcanvas. data-bs-toggle activa el carrito sin JS extra. -->
+    <button id="open-cart" class="floating-cart btn rounded-circle"
+        data-bs-toggle="offcanvas" data-bs-target="#cart-sidebar" aria-controls="cart-sidebar">
         🛒
     </button>
+
+    <!-- JS de Bootstrap (bundle incluye Popper, necesario para offcanvas/modal/collapse) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
