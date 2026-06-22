@@ -33,9 +33,8 @@
             </a>
 
             <!-- Botón hamburguesa nativo de Bootstrap (reemplaza al .menu-toggle propio) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false"
-                aria-label="Abrir menú">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu"
+                aria-controls="mainMenu" aria-expanded="false" aria-label="Abrir menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -91,8 +90,8 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="cart-sidebar" aria-labelledby="cartLabel">
         <div class="offcanvas-header cart-header">
             <h5 class="offcanvas-title" id="cartLabel">🛒 Carrito</h5>
-            <button type="button" id="close-cart" class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            <button type="button" id="close-cart" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Cerrar"></button>
         </div>
 
         <div id="cart-items" class="offcanvas-body cart-items">
@@ -106,10 +105,16 @@
     </div>
 
     <!-- Botón flotante para abrir el offcanvas. data-bs-toggle activa el carrito sin JS extra. -->
-    <button id="open-cart" class="floating-cart btn rounded-circle"
-        data-bs-toggle="offcanvas" data-bs-target="#cart-sidebar" aria-controls="cart-sidebar">
-        🛒
-    </button>
+    <div>
+        <button id="open-cart" class="floating-cart btn rounded-circle" data-bs-toggle="offcanvas"
+            data-bs-target="#cart-sidebar" aria-controls="cart-sidebar">
+            🛒
+            <div class="container-counter">
+                <p id="car-counter" class="counter">0</p>
+            </div>
+        </button>
+
+    </div>
 
     <!-- JS de Bootstrap (bundle incluye Popper, necesario para offcanvas/modal/collapse) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

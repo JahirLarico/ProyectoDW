@@ -10,7 +10,7 @@
 
 const carrito = getLclStrg("carrito") !== null ? getLclStrg("carrito") : [];
 const cartItems = document.getElementById("cart-items");
-
+const counter = carrito.length || 0;
 function agregarAlCarrito(producto) {
     let productosLS = getLclStrg("carrito") === null
         ? []
@@ -30,8 +30,7 @@ function quitarDelCarrito(nombreProducto) {
     if (index !== -1) {
         carrito.splice(index, 1);
         setLclStrg("carrito", JSON.stringify(carrito));
-        if (carrito.length === 0) localStorage.removeItem("carrito");
-
+        if (carrito.length === 0) localStorage.removeItem("carrito") ;
         renderCarrito();
         actualizarBotones();
         showNotification(`${nombreProducto} eliminado del carrito`, "warning");
@@ -70,6 +69,7 @@ function renderCarrito() {
         cartItems.innerHTML =
             '<p class="empty-cart text-center text-muted">Tu carrito está vacío</p>';
         document.getElementById("cart-total").textContent = "Total: S/ 0";
+        document.getElementById("car-counter").textContent = 0;
         return;
     }
 
@@ -95,6 +95,10 @@ function renderCarrito() {
 
     document.getElementById("cart-total").textContent =
         `Total: S/ ${total.toLocaleString()}`;
+
+        console.log(carrito.length)
+    document.getElementById("car-counter").textContent = carrito.length !== 0 ? carrito.length : 0;
+    // console.log(carrito.length)
 }
 
 renderCarrito();
