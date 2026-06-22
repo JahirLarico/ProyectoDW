@@ -1,8 +1,6 @@
-/*
-    index.js
-    - Eliminado el toggle manual del menú: ahora lo maneja
+/* - Eliminado el toggle manual del menú: ahora lo maneja
       data-bs-toggle="collapse" del navbar de Bootstrap.
-    - showProducts() genera cards con la estructura de la GRILLA
+    - showProducts() genera cards con la estructura
       de Bootstrap: cada producto va dentro de un <div class="col">
       para que row-cols-* del padre controle las columnas según
       el breakpoint (Mobile First).

@@ -1,7 +1,5 @@
-/*
-    PAGO - CSS propio complementario.
-    La grilla la hace Bootstrap con row + col-12 / col-lg-8 / col-lg-4.
-    Mobile First: base sin grid extra, solo colores y detalles.
+/*PAGO - CSS propio complementario.
+Mobile First: base sin grid extra, solo colores y detalles.
 */
 
 :root{

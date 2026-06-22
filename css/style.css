@@ -131,12 +131,7 @@ body{
     z-index:1040; /* por debajo del offcanvas (1045) */
 }
 
-/* ==========================================================
-    BREAKPOINTS MOBILE FIRST
-    Se usa min-width para AÑADIR (no para quitar) estilos.
-   ========================================================== */
-
-/* Tablet ≥768px: tipografías y paddings más holgados */
+/* BREAKPOINTS MOBILE FIRST Tablet ≥768px: tipografías y paddings más holgados */
 @media (min-width: 768px){
     .banner{ padding:90px 24px; }
     .banner h1{ font-size:2.75rem; }
@@ -181,4 +176,21 @@ body{
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
     }
+}
+@keyframes entradaTitulo {
+    0% {
+        opacity: 0;                 /* Inicia invisible */
+        transform: translateY(30px);  /* 30 px más abajo */
+    }
+    100% {
+        opacity: 1;                   /* Termina visible */
+        transform: translateY(0);       /* Posición normal */
+    }
+}
+
+.container {
+    animation-name: entradaTitulo;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
 }

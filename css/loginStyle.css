@@ -1,7 +1,4 @@
-/*
-    LOGIN - CSS propio complementario al .card y .form-control de Bootstrap.
-    Mobile First: el .login-card ya usa w-100 y max-width en el HTML,
-    aquí solo añadimos colores, blur y degradado.
+/* LOGIN - CSS solo añadimos colores y degradado.
 */
 
 body{

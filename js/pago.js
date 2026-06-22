@@ -1,7 +1,7 @@
 /*
     pago.js
     - loadData() ahora renderiza cada item del resumen con la clase
-      .item (estilizada en pagoStyle.css). La grilla del layout
+      .item (estilizada en pagoStyle.css).layout
       (formulario + resumen) la hace Bootstrap en pago.html.
 */
 

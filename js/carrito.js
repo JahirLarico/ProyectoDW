@@ -1,5 +1,4 @@
 /*
-    carrito.js
     - Eliminado el manejo manual de cartSidebar.classList.add('active'):
       ahora el carrito es un OFFCANVAS de Bootstrap y se abre/cierra
       con data-bs-toggle / data-bs-dismiss desde el HTML.
